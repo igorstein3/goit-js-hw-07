@@ -26,12 +26,11 @@ const images = [
   },
 ];
 const gallery = document.querySelector(".gallery");
-images.forEach((item) => {
-const element = document.createElement("li");
-  const image = document.createElement("img");
-  image.width = 360;
-  image.height = 300;
-image.src = item.url;
-  image.alt = item.alt;
-  gallery.append(element);
-element.append(image);})
+const galleryElements = images
+  .map(({ url, alt }) => 
+    `<li class="gallery-item">
+      <img src="${url}" alt="${alt}" width="360" height="300" >
+    </li>`)
+  .join('');
+
+gallery.insertAdjacentHTML('beforeend', galleryElements);
